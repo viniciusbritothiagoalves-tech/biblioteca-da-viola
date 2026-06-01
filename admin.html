@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo | Biblioteca da Viola</title>
+    
+    <!-- Premium Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Self-contained Elegant CSS to keep it easy to deploy -->
+    <style>
+        :root {
+            --font-heading: 'Cinzel', Georgia, serif;
+            --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            --bg-primary: #0a0a0b;
+            --bg-gradient: radial-gradient(circle at 50% 35%, #181512 0%, #080809 85%);
+            --bg-card: rgba(18, 17, 20, 0.85);
+            --gold-primary: #c5a880;
+            --gold-accent: #e5c185;
+            --text-primary: #fcfaf6;
+            --text-secondary: #aba9a4;
+            --text-muted: #6e6d6a;
+            --border-gold: rgba(197, 168, 128, 0.15);
+            --color-error: #e74c3c;
+            --color-success: #2ecc71;
+            --radius-large: 16px;
+            --radius-medium: 10px;
+            --radius-small: 6px;
+            --shadow-premium: 0 15px 35px rgba(0, 0, 0, 0.6);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            background-image: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* 1. TELA DE LOGIN */
+        .login-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-gold);
+            border-radius: var(--radius-large);
+            padding: 40px 30px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: var(--shadow-premium);
+            backdrop-filter: blur(12px);
+            text-align: center;
+            display: block; /* Alterna com none */
+        }
+
+        .login-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            color: var(--gold-accent);
+        }
+
+        .logo-text {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            color: var(--gold-accent);
+        }
+
+        .login-title {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .login-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+            text-align: left;
+        }
+
+        .form-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            background-color: rgba(0,0,0,0.3);
+            border: 1px solid var(--border-gold);
+            border-radius: var(--radius-medium);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+
+        .form-input:focus {
+            border-color: var(--gold-accent);
+            box-shadow: 0 0 10px rgba(229, 193, 133, 0.15);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, var(--gold-accent) 0%, var(--gold-primary) 100%);
+            border: none;
+            border-radius: var(--radius-medium);
+            color: #0c0a08;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 0 15px rgba(229, 193, 133, 0.3);
+        }
+
+        .error-msg {
+            display: none;
+            color: var(--color-error);
+            font-size: 0.8rem;
+            margin-top: 12px;
+            font-weight: 500;
+        }
+
+        /* 2. PAINEL PRINCIPAL (DASHBOARD) */
+        .dashboard-container {
+            width: 100%;
+            max-width: 1100px;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-gold);
+            border-radius: var(--radius-large);
+            box-shadow: var(--shadow-premium);
+            padding: 30px;
+            backdrop-filter: blur(12px);
+            display: none; /* Alterna com block */
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .dash-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-gold);
+            padding-bottom: 20px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .dash-title-block h1 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .dash-title-block p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .dash-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border-gold);
+            color: var(--gold-accent);
+            padding: 10px 20px;
+            border-radius: var(--radius-medium);
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(197, 168, 128, 0.08);
+            border-color: var(--gold-accent);
+            color: var(--text-primary);
+        }
+
+        .btn-logout {
+            border-color: var(--color-error);
+            color: var(--color-error);
+        }
+
+        .btn-logout:hover {
+            background-color: rgba(231, 76, 60, 0.1);
+            color: #ff7675;
+        }
+
+        /* Resumos em Cards menores */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background-color: rgba(0,0,0,0.2);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: var(--radius-medium);
+            padding: 20px;
+            text-align: center;
+        }
+
+        .stat-card h3 {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .stat-card .value {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--gold-accent);
+        }
+
+        /* Filtros e Busca */
+        .filter-bar {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 768px) {
+            .filter-bar {
+                grid-template-columns: 1fr;
+            }
+            .dash-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .dash-actions {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            border: 1px solid var(--border-gold);
+            border-radius: var(--radius-medium);
+            background-color: rgba(0,0,0,0.15);
+        }
+
+        .leads-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.85rem;
+        }
+
+        .leads-table th, .leads-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid rgba(197, 168, 128, 0.08);
+            white-space: nowrap;
+        }
+
+        .leads-table th {
+            background-color: rgba(0,0,0,0.4);
+            font-family: var(--font-heading);
+            letter-spacing: 1px;
+            color: var(--gold-primary);
+            font-weight: 600;
+        }
+
+        .leads-table tr:hover td {
+            background-color: rgba(197, 168, 128, 0.02);
+        }
+
+        .leads-table td {
+            color: var(--text-primary);
+        }
+
+        .leads-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Badges de Status na Tabela */
+        .badge {
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .badge-qual {
+            background-color: rgba(229, 193, 133, 0.1);
+            color: var(--gold-accent);
+            border: 1px solid rgba(229, 193, 133, 0.3);
+        }
+
+        .badge-unqual {
+            background-color: rgba(255,255,255,0.03);
+            color: var(--text-muted);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .badge-paid {
+            background-color: rgba(46, 204, 113, 0.1);
+            color: var(--color-success);
+            border: 1px solid rgba(46, 204, 113, 0.3);
+        }
+
+        .badge-pending {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+        }
+
+        .btn-delete {
+            background: none;
+            border: none;
+            color: var(--color-error);
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.8rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .btn-delete:hover {
+            background-color: rgba(231, 76, 60, 0.15);
+        }
+
+        .no-data {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. TELA DE LOGIN -->
+    <div class="login-card" id="view-login">
+        <div class="login-logo">
+            <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M9 3C9 3 7 5 7 8C7 11 10 12 10 14C10 16 8 18 8 21" stroke-linecap="round"/>
+                <path d="M15 3C15 3 17 5 17 8C17 11 14 12 14 14C14 16 16 18 16 21" stroke-linecap="round"/>
+                <circle cx="9.5" cy="11" r="1" fill="currentColor"/>
+                <circle cx="14.5" cy="11" r="1" fill="currentColor"/>
+                <path d="M12 2V22" stroke-dasharray="2 2" stroke-linecap="round"/>
+            </svg>
+            <span class="logo-text">BIBLIOTECA DA VIOLA</span>
+        </div>
+        <h2 class="login-title">Acesso Restrito</h2>
+        <p class="login-subtitle">Faça login para gerenciar os dados dos leads coletados.</p>
+        
+        <form id="login-form" onsubmit="event.preventDefault(); handleLogin();">
+            <div class="form-group">
+                <label class="form-label" for="username">Usuário</label>
+                <input class="form-input" type="text" id="username" placeholder="Digite seu usuário" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="password">Senha</label>
+                <input class="form-input" type="password" id="password" placeholder="Digite sua senha" required>
+            </div>
+            <button type="submit" class="btn">Entrar no Painel</button>
+            <div class="error-msg" id="login-error">Usuário ou senha incorretos!</div>
+        </form>
+    </div>
+
+    <!-- 2. PAINEL PRINCIPAL (DASHBOARD) -->
+    <div class="dashboard-container" id="view-dashboard">
+        
+        <!-- Cabeçalho Dashboard -->
+        <header class="dash-header">
+            <div class="dash-title-block">
+                <h1>Painel de Leads</h1>
+                <p>Monitoramento em tempo real conectado ao Firebase Firestore</p>
+            </div>
+            <div class="dash-actions">
+                <button id="btn-export-csv" class="btn-outline">📥 Exportar para Excel (CSV)</button>
+                <button onclick="handleLogout()" class="btn-outline btn-logout">Sair</button>
+            </div>
+        </header>
+
+        <!-- Stats row summaries -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Total de Cadastros</h3>
+                <div class="value" id="stat-total">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Qualificados</h3>
+                <div class="value" id="stat-qualified">0</div>
+            </div>
+            <div class="stat-card">
+                <h3>Assinaturas Pagas</h3>
+                <div class="value" id="stat-paid">0</div>
+            </div>
+        </div>
+
+        <!-- Filtros e Busca -->
+        <div class="filter-bar">
+            <input type="text" id="search-input" class="form-input" placeholder="Pesquisar por Nome ou WhatsApp...">
+            
+            <select id="filter-qual" class="form-input">
+                <option value="all">Todas as Qualificações</option>
+                <option value="qualified">Qualificados (Sim/Talvez)</option>
+                <option value="unqualified">Não Qualificados (Não)</option>
+            </select>
+
+            <select id="filter-pay" class="form-input">
+                <option value="all">Todos os Pagamentos</option>
+                <option value="paid">Pagamento Aprovado</option>
+                <option value="pending">Pagamento Pendente</option>
+            </select>
+        </div>
+
+        <!-- Leads Table list -->
+        <div class="table-container">
+            <table class="leads-table" id="leads-table">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>WhatsApp</th>
+                        <th>Desafio</th>
+                        <th>Tempo Viola</th>
+                        <th>Qualificado?</th>
+                        <th>Pagamento</th>
+                        <th>Grupo WA?</th>
+                        <th>Cadastro</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="leads-table-body">
+                    <tr>
+                        <td colspan="9" class="no-data">Carregando dados dos leads...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Firebase SDK Compat -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="firebaseConfig.js"></script>
+
+    <!-- Admin dashboard logic -->
+    <script>
+        // ==========================================================================
+        // CREDENCIAIS DE ACESSO (Altere aqui se desejar mudar seu login e senha!)
+        // ==========================================================================
+        const ADMIN_CREDENTIALS = {
+            username: "admin",
+            password: "viola2026"
+        };
+
+        let rawLeadsList = [];
+
+        // Verifica estado de login ao carregar a página
+        window.addEventListener("load", () => {
+            if (sessionStorage.getItem("admin_authenticated") === "true") {
+                showDashboard();
+            }
+        });
+
+        // 1. FUNÇÃO DE LOGIN
+        function handleLogin() {
+            const userIn = document.getElementById("username").value.trim();
+            const passIn = document.getElementById("password").value;
+            const errorDiv = document.getElementById("login-error");
+
+            if (userIn === ADMIN_CREDENTIALS.username && passIn === ADMIN_CREDENTIALS.password) {
+                sessionStorage.setItem("admin_authenticated", "true");
+                errorDiv.style.display = "none";
+                showDashboard();
+            } else {
+                errorDiv.style.display = "block";
+                // Efeito shake
+                const card = document.getElementById("view-login");
+                card.style.animation = "none";
+                setTimeout(() => {
+                    card.style.animation = "shake 0.4s ease";
+                }, 10);
+            }
+        }
+
+        // CSS Shake animation definition injected dynamically for login
+        const styleSheet = document.createElement("style");
+        styleSheet.innerText = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                20%, 60% { transform: translateX(-6px); }
+                40%, 80% { transform: translateX(6px); }
+            }
+        `;
+        document.head.appendChild(styleSheet);
+
+        // 2. FUNÇÃO DE LOGOUT
+        function handleLogout() {
+            sessionStorage.removeItem("admin_authenticated");
+            document.getElementById("view-dashboard").style.display = "none";
+            document.getElementById("view-login").style.display = "block";
+            document.getElementById("login-form").reset();
+        }
+
+        // 3. ATIVAÇÃO DO DASHBOARD
+        async function showDashboard() {
+            document.getElementById("view-login").style.display = "none";
+            document.getElementById("view-dashboard").style.display = "block";
+            
+            // Inicializa a escuta reativa em tempo real do Firestore se ativo, ou carrega local
+            initLeadsListener();
+        }
+
+        // 4. ESCUTA E CARREGAMENTO DE DADOS (Firestore real-time sync)
+        function initLeadsListener() {
+            const isFirebase = ViolaDB.isFirebaseConnected();
+            
+            if (isFirebase && typeof db !== "undefined" && db !== null) {
+                console.log("Admin: Conectado reativamente ao Firestore!");
+                // Sincronização em tempo real nativa
+                db.collection("leads_viola").orderBy("created_at", "desc").onSnapshot((snapshot) => {
+                    const list = [];
+                    snapshot.forEach((doc) => {
+                        list.push(doc.data());
+                    });
+                    rawLeadsList = list;
+                    renderLeads(list);
+                    updateStats(list);
+                }, (error) => {
+                    console.error("Erro reativo no Firestore admin:", error);
+                    loadBackupLocalLeads();
+                });
+            } else {
+                console.log("Admin: Utilizando modo LocalStorage Fallback!");
+                loadBackupLocalLeads();
+            }
+        }
+
+        async function loadBackupLocalLeads() {
+            try {
+                const list = await ViolaDB.getAllLeads();
+                rawLeadsList = list;
+                renderLeads(list);
+                updateStats(list);
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+        // 5. ATUALIZAR INDICADORES CARD
+        function updateStats(leads) {
+            document.getElementById("stat-total").textContent = leads.length;
+            
+            const qualCount = leads.filter(l => l.qualified).length;
+            document.getElementById("stat-qualified").textContent = qualCount;
+            
+            const paidCount = leads.filter(l => l.payment_status === "approved").length;
+            document.getElementById("stat-paid").textContent = paidCount;
+        }
+
+        // 6. RENDERIZAR TABELA DE LEADS
+        function renderLeads(leads) {
+            const tableBody = document.getElementById("leads-table-body");
+            
+            // Aplica filtros antes de renderizar
+            const searchVal = document.getElementById("search-input").value.toLowerCase().trim();
+            const filterQual = document.getElementById("filter-qual").value;
+            const filterPay = document.getElementById("filter-pay").value;
+
+            const filteredLeads = leads.filter(lead => {
+                // Filtro busca nome ou whatsapp
+                const matchesSearch = lead.nome.toLowerCase().includes(searchVal) || 
+                                      lead.whatsapp.includes(searchVal);
+                
+                // Filtro qualificação
+                let matchesQual = true;
+                if (filterQual === "qualified") matchesQual = lead.qualified;
+                if (filterQual === "unqualified") matchesQual = !lead.qualified;
+
+                // Filtro pagamento
+                let matchesPay = true;
+                if (filterPay === "paid") matchesPay = lead.payment_status === "approved";
+                if (filterPay === "pending") matchesPay = lead.payment_status !== "approved";
+
+                return matchesSearch && matchesQual && matchesPay;
+            });
+
+            if (filteredLeads.length === 0) {
+                tableBody.innerHTML = `<tr><td colspan="9" class="no-data">Nenhum cadastro encontrado com os filtros selecionados.</td></tr>`;
+                return;
+            }
+
+            let html = "";
+            filteredLeads.forEach(lead => {
+                const qualBadge = lead.qualified ? 
+                    `<span class="badge badge-qual">Sim</span>` : 
+                    `<span class="badge badge-unqual">Não</span>`;
+                
+                const payBadge = lead.payment_status === "approved" ? 
+                    `<span class="badge badge-paid">Pago (Simulado)</span>` : 
+                    `<span class="badge badge-pending">Pendente</span>`;
+                
+                const groupBadge = lead.joined_whatsapp_group ? 
+                    `<span class="badge badge-paid">Entrou</span>` : 
+                    `<span class="badge badge-pending">Não</span>`;
+                
+                // Formata número visual (XX XXXXX-XXXX)
+                const num = lead.whatsapp;
+                const formattedNum = `(${num.substring(0,2)}) ${num.substring(2,7)}-${num.substring(7)}`;
+                
+                // Formata data legível em PT-BR
+                const dateObj = new Date(lead.created_at);
+                const formattedDate = dateObj.toLocaleDateString("pt-BR") + " " + dateObj.toLocaleTimeString("pt-BR", {hour: '2-digit', minute:'2-digit'});
+
+                html += `
+                    <tr id="row-${lead.id}">
+                        <td><strong>${lead.nome}</strong></td>
+                        <td><a href="https://wa.me/55${lead.whatsapp}" target="_blank" style="color:var(--gold-accent); text-decoration:none;">${formattedNum} ➔</a></td>
+                        <td>${lead.maior_desafio}</td>
+                        <td>${lead.tempo_toca}</td>
+                        <td>${qualBadge}</td>
+                        <td>${payBadge}</td>
+                        <td>${groupBadge}</td>
+                        <td>${formattedDate}</td>
+                        <td>
+                            <button onclick="deleteLead('${lead.id}', '${lead.whatsapp}')" class="btn-delete" title="Excluir Registro">Excluir</button>
+                        </td>
+                    </tr>
+                `;
+            });
+            
+            tableBody.innerHTML = html;
+        }
+
+        // 7. EXCLUIR REGISTRO (CRUD DELETE)
+        async function deleteLead(leadId, whatsapp) {
+            if (confirm(`Atenção: Deseja realmente excluir permanentemente o cadastro de WhatsApp ${whatsapp}?`)) {
+                const isFirebase = ViolaDB.isFirebaseConnected();
+                
+                if (isFirebase && typeof db !== "undefined" && db !== null) {
+                    try {
+                        await db.collection("leads_viola").doc(leadId).delete();
+                        alert("Cadastro excluído com sucesso do Firestore!");
+                    } catch (e) {
+                        console.error(e);
+                        alert("Erro ao excluir do Firestore. Tentando excluir do backup local.");
+                        deleteLeadLocal(whatsapp);
+                    }
+                } else {
+                    deleteLeadLocal(whatsapp);
+                }
+            }
+        }
+
+        function deleteLeadLocal(whatsapp) {
+            try {
+                const leads = JSON.parse(localStorage.getItem("leads_viola") || "[]");
+                const cleanNum = whatsapp.replace(/\D/g, '');
+                const filtered = leads.filter(l => l.whatsapp.replace(/\D/g, '') !== cleanNum);
+                localStorage.setItem("leads_viola", JSON.stringify(filtered));
+                alert("Cadastro excluído com sucesso do banco local!");
+                loadBackupLocalLeads(); // recarrega a tela
+            } catch (err) {
+                console.error(err);
+            }
+        }
+
+        // 8. FILTROS E PESQUISAS REATIVOS
+        document.getElementById("search-input").addEventListener("input", () => renderLeads(rawLeadsList));
+        document.getElementById("filter-qual").addEventListener("change", () => renderLeads(rawLeadsList));
+        document.getElementById("filter-pay").addEventListener("change", () => renderLeads(rawLeadsList));
+
+        // 9. MOTOR DE EXPORTAÇÃO EXCEL (UTF-8 BOM CSV)
+        document.getElementById("btn-export-csv").addEventListener("click", () => {
+            if (rawLeadsList.length === 0) {
+                alert("Nenhum lead disponível para exportação.");
+                return;
+            }
+            
+            // UTF-8 BOM para abrir com acentuações corretas no Excel
+            let csvContent = "data:text/csv;charset=utf-8,\uFEFF";
+            csvContent += "ID,Data de Cadastro,Nome,WhatsApp,Situacao Atual,Maior Desafio,Tempo de Pratica,Projecao 12 meses,Intencao R$60,Qualificado?,Status de Pagamento,Data de Pagamento,Entrou no Grupo WhatsApp?\n";
+            
+            rawLeadsList.forEach(lead => {
+                let row = [
+                    lead.id,
+                    lead.created_at,
+                    `"${lead.nome.replace(/"/g, '""')}"`,
+                    lead.whatsapp,
+                    `"${lead.situacao_atual}"`,
+                    `"${lead.maior_desafio}"`,
+                    `"${lead.tempo_toca}"`,
+                    `"${lead.projecao_futura}"`,
+                    `"${lead.purchase_intent}"`,
+                    lead.qualified ? "Sim" : "Não",
+                    lead.payment_status === "approved" ? "Pago" : "Pendente",
+                    lead.payment_date || "-",
+                    lead.joined_whatsapp_group ? "Sim" : "Não"
+                ].join(",");
+                csvContent += row + "\n";
+            });
+            
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", `leads_viola_${new Date().toISOString().slice(0, 10)}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+    </script>
+</body>
+</html>

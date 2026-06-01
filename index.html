@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- SEO Optimization -->
+    <title>Diagnóstico para Violistas | Biblioteca da Viola</title>
+    <meta name="description" content="Descubra seu estágio atual na viola de arco e veja se a Biblioteca da Viola foi criada para você.">
+    <meta name="keywords" content="viola de arco, violista, hinos ccb, evolução na viola, estudo de viola, método de arco, afinação viola">
+    <meta name="author" content="Biblioteca da Viola">
+    
+    <!-- Open Graph Metadata -->
+    <meta property="og:title" content="Diagnóstico para Violistas | Biblioteca da Viola">
+    <meta property="og:description" content="Descubra seu estágio atual na viola de arco e veja se a Biblioteca da Viola foi criada para você.">
+    <meta property="og:type" content="website">
+    
+    <!-- Premium Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- CSS stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header / Logo -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="logo">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <!-- Elegant Viola F-Hole representation -->
+                    <path d="M9 3C9 3 7 5 7 8C7 11 10 12 10 14C10 16 8 18 8 21" stroke-linecap="round"/>
+                    <path d="M15 3C15 3 17 5 17 8C17 11 14 12 14 14C14 16 16 18 16 21" stroke-linecap="round"/>
+                    <circle cx="9.5" cy="11" r="1" fill="currentColor"/>
+                    <circle cx="14.5" cy="11" r="1" fill="currentColor"/>
+                    <path d="M12 2V22" stroke-dasharray="2 2" stroke-linecap="round"/>
+                </svg>
+                <span class="logo-text">BIBLIOTECA DA VIOLA</span>
+            </div>
+            <div class="header-badge">Método de Evolução</div>
+        </div>
+    </header>
+
+    <!-- Main Container switching views dynamically -->
+    <main class="app-container">
+
+        <!-- VIEW 1: LANDING PAGE (Hero & Consciousness) -->
+        <section id="view-landing" class="app-view active">
+            <!-- HERO SECTION -->
+            <div class="hero-section">
+                <div class="hero-badge">Diagnóstico Exclusivo para Violistas</div>
+                <h1 class="hero-title">Você Está Evoluindo na Viola ou Apenas Repetindo os Mesmos Erros?</h1>
+                <p class="hero-subtitle">Responda algumas perguntas rápidas e descubra se a Biblioteca da Viola foi criada para o seu momento atual.</p>
+                <p class="hero-meta">Centenas de músicos passam anos praticando sem saber exatamente o que precisam corrigir. Este diagnóstico leva menos de 2 minutos.</p>
+                
+                <div class="hero-actions">
+                    <button id="btn-start-diagnosis" class="btn btn-gold btn-large">
+                        Começar Diagnóstico
+                        <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- CONSCIOUSNESS SECTION -->
+            <div class="consciousness-section">
+                <div class="violin-watermark">
+                    <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="0.3" class="svg-watermark">
+                        <path d="M35 15 C30 25, 25 35, 25 50 C25 65, 30 75, 35 85 C38 82, 42 78, 42 70 C42 60, 36 55, 36 50 C36 45, 42 40, 42 30 C42 22, 38 18, 35 15 Z" />
+                        <path d="M65 15 C70 25, 75 35, 75 50 C75 65, 70 75, 65 85 C62 82, 58 78, 58 70 C58 60, 64 55, 64 50 C64 45, 58 40, 58 30 C58 22, 62 18, 65 15 Z" />
+                        <line x1="50" y1="5" x2="50" y2="95" stroke-dasharray="1 1" />
+                    </svg>
+                </div>
+                <div class="consciousness-card">
+                    <h2 class="section-title">Talvez o problema não seja falta de esforço.</h2>
+                    <div class="section-divider"></div>
+                    <p class="section-text">Muitos músicos estudam durante anos, mas continuam enfrentando dificuldades com afinação, digitação, controle de arco e expressão musical.</p>
+                    <p class="section-text text-highlight">O problema nem sempre é dedicação.</p>
+                    <p class="section-text">Muitas vezes é a ausência de direção clara.</p>
+                    <p class="section-text">Antes de conhecer a Biblioteca da Viola, descubra em qual estágio você está.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW 2: MULTI-STEP DIAGNOSIS FORM -->
+        <section id="view-diagnosis" class="app-view">
+            <div class="form-container">
+                
+
+
+                <!-- Form Wizard Element -->
+                <form id="diagnosis-form" novalidate>
+                    
+                    <!-- STEP 1: NOME COMPLETO -->
+                    <div class="form-step active" data-step="1">
+                        <div class="question-header">
+                            <span class="question-number">01</span>
+                            <h2 class="question-title">Qual é o seu nome completo?</h2>
+                            <p class="question-subtitle">Queremos te conhecer pessoalmente para personalizar sua análise.</p>
+                        </div>
+                        <div class="input-wrapper">
+                            <input type="text" id="input-nome" name="nome" placeholder="Digite seu nome completo" class="input-text" autocomplete="name" required>
+                            <div class="input-error" id="error-nome">Por favor, insira seu nome completo.</div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 2: WHATSAPP -->
+                    <div class="form-step" data-step="2">
+                        <div class="question-header">
+                            <span class="question-number">02</span>
+                            <h2 class="question-title">Qual é o seu WhatsApp de contato?</h2>
+                            <p class="question-subtitle">Usamos este número para salvar seu diagnóstico e liberar seu convite.</p>
+                        </div>
+                        <div class="input-wrapper">
+                            <input type="tel" id="input-whatsapp" name="whatsapp" placeholder="Ex: 11 99999-9999" class="input-text" autocomplete="tel" required>
+                            <div class="input-hint" id="hint-whatsapp">Digite apenas DDD + número. Exemplo: 31 99999-9999</div>
+                            <div class="input-error" id="error-whatsapp">Número de WhatsApp inválido.</div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 3: SITUAÇÃO ATUAL -->
+                    <div class="form-step" data-step="3">
+                        <div class="question-header">
+                            <span class="question-number">03</span>
+                            <h2 class="question-title">Qual sua situação atual com a viola?</h2>
+                            <p class="question-subtitle">Selecione a opção que melhor descreve seu momento atual.</p>
+                        </div>
+                        <div class="options-grid">
+                            <label class="option-card">
+                                <input type="radio" name="situacao_atual" value="Ainda estou aprendendo o básico" required>
+                                <span class="option-radio"></span>
+                                <span class="option-label">Ainda estou aprendendo o básico</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="situacao_atual" value="Já toco alguns hinos">
+                                <span class="option-radio"></span>
+                                <span class="option-label">Já toco alguns hinos</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="situacao_atual" value="Toco regularmente mas sinto que não evoluo">
+                                <span class="option-radio"></span>
+                                <span class="option-label">Toco regularmente mas sinto que não evoluo</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="situacao_atual" value="Já toco bem mas quero desenvolver expressão musical">
+                                <span class="option-radio"></span>
+                                <span class="option-label">Já toco bem mas quero desenvolver expressão musical</span>
+                            </label>
+                        </div>
+                        <div class="input-error" id="error-situacao">Selecione uma das opções acima para continuar.</div>
+                    </div>
+
+                    <!-- STEP 4: MAIOR DESAFIO -->
+                    <div class="form-step" data-step="4">
+                        <div class="question-header">
+                            <span class="question-number">04</span>
+                            <h2 class="question-title">Qual o seu maior desafio hoje na prática?</h2>
+                            <p class="question-subtitle">Identificar seu gargalo principal nos ajuda a indicar o melhor caminho.</p>
+                        </div>
+                        <div class="options-grid">
+                            <label class="option-card">
+                                <input type="radio" name="maior_desafio" value="Ornamentos (vibrato, portamento, glissando)" required>
+                                <span class="option-radio"></span>
+                                <span class="option-label">Ornamentos (vibrato, portamento, glissando)</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="maior_desafio" value="Memorizar digitações">
+                                <span class="option-radio"></span>
+                                <span class="option-label">Memorizar digitações</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="maior_desafio" value="Afinação">
+                                <span class="option-radio"></span>
+                                <span class="option-label">Afinação</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="maior_desafio" value="Controle de arco">
+                                <span class="option-radio"></span>
+                                <span class="option-label">Controle de arco</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="maior_desafio" value="Expressão musical">
+                                <span class="option-radio"></span>
+                                <span class="option-label">Expressão musical</span>
+                            </label>
+                        </div>
+                        <div class="input-error" id="error-desafio">Selecione uma das opções acima para continuar.</div>
+                    </div>
+
+                    <!-- STEP 5: HÁ QUANTO TEMPO TOCA -->
+                    <div class="form-step" data-step="5">
+                        <div class="question-header">
+                            <span class="question-number">05</span>
+                            <h2 class="question-title">Há quanto tempo você toca ou estuda viola?</h2>
+                            <p class="question-subtitle">O tempo de estudo molda o ritmo de evolução necessário.</p>
+                        </div>
+                        <div class="options-grid">
+                            <label class="option-card">
+                                <input type="radio" name="tempo_toca" value="Menos de 1 ano" required>
+                                <span class="option-radio"></span>
+                                <span class="option-label">Menos de 1 ano</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="tempo_toca" value="Entre 1 e 3 anos">
+                                <span class="option-radio"></span>
+                                <span class="option-label">Entre 1 e 3 anos</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="tempo_toca" value="Entre 3 e 5 anos">
+                                <span class="option-radio"></span>
+                                <span class="option-label">Entre 3 e 5 anos</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="tempo_toca" value="Mais de 5 anos">
+                                <span class="option-radio"></span>
+                                <span class="option-label">Mais de 5 anos</span>
+                            </label>
+                        </div>
+                        <div class="input-error" id="error-tempo">Selecione uma das opções acima para continuar.</div>
+                    </div>
+
+                    <!-- STEP 6: PROJEÇÃO FUTURA -->
+                    <div class="form-step" data-step="6">
+                        <div class="question-header">
+                            <span class="question-number">06</span>
+                            <h2 class="question-title">Se continuar estudando exatamente como hoje, onde estará daqui a 12 meses?</h2>
+                            <p class="question-subtitle">Uma reflexão honesta sobre seu método de prática atual.</p>
+                        </div>
+                        <div class="options-grid">
+                            <label class="option-card">
+                                <input type="radio" name="projecao_futura" value="Praticamente igual" required>
+                                <span class="option-radio"></span>
+                                <span class="option-label">Praticamente igual (enfrentando as mesmas dificuldades, erros de afinação e travamentos de hoje)</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="projecao_futura" value="Não sei">
+                                <span class="option-radio"></span>
+                                <span class="option-label">Não sei responder (estou sem um rumo claro e não faço ideia de onde estarei daqui a 12 meses)</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="projecao_futura" value="Pouco melhor">
+                                <span class="option-radio"></span>
+                                <span class="option-label">Pouco melhor (mas com uma evolução extremamente lenta e travada estudando por conta própria)</span>
+                            </label>
+                            <label class="option-card">
+                                <input type="radio" name="projecao_futura" value="Muito melhor">
+                                <span class="option-radio"></span>
+                                <span class="option-label">Muito melhor (acredito que NÃO preciso de ajuda externa, já tenho um método perfeito e evoluirei facilmente sozinho)</span>
+                            </label>
+                        </div>
+                        <div class="input-error" id="error-projecao">Selecione uma das opções acima para continuar.</div>
+                    </div>
+
+                    <!-- STEP 7: PURCHASE INTENT -->
+                    <div class="form-step" data-step="7">
+                        <div class="question-header">
+                            <span class="question-number">07</span>
+                            <h2 class="question-title">Para acelerar sua evolução na viola de arco com um método passo a passo e ter acesso a todo o material de apoio, você aceitaria investir R$60 por mês (menos de R$2 por dia)?</h2>
+                            <p class="question-subtitle">A Biblioteca da Viola é uma assinatura restrita a músicos comprometidos com evolução real de longo prazo.</p>
+                        </div>
+                        <div class="options-grid">
+                            <label class="option-card card-premium">
+                                <input type="radio" name="purchase_intent" value="Sim" required>
+                                <span class="option-radio"></span>
+                                <span class="option-label font-bold">Sim, estou pronto para investir R$60 por mês na minha evolução musical.</span>
+                            </label>
+                            <label class="option-card card-premium">
+                                <input type="radio" name="purchase_intent" value="Talvez">
+                                <span class="option-radio"></span>
+                                <span class="option-label font-bold">Talvez, se eu perceber que este ambiente estruturado é ideal para o meu momento.</span>
+                            </label>
+                            <label class="option-card card-premium">
+                                <input type="radio" name="purchase_intent" value="Não">
+                                <span class="option-radio"></span>
+                                <span class="option-label">Não, prefiro continuar estudando sozinho por conta própria sem fazer investimentos.</span>
+                            </label>
+                        </div>
+                        <div class="input-error" id="error-intent">Selecione uma das opções acima para concluir seu diagnóstico.</div>
+                    </div>
+
+                    <!-- Wizard Navigation Button Actions -->
+                    <div class="form-navigation">
+                        <button type="button" id="btn-prev-step" class="btn btn-outline" disabled>
+                            <svg class="btn-arrow btn-arrow-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="19" y1="12" x2="5" y2="12"></line>
+                                <polyline points="12 19 5 12 12 5"></polyline>
+                            </svg>
+                            Voltar
+                        </button>
+                        <button type="button" id="btn-next-step" class="btn btn-gold">
+                            <span>Avançar</span>
+                            <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Error banner (for database blockages e.g. duplicate) -->
+                    <div class="form-global-error" id="form-global-error" style="display: none;">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="error-icon">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="8" x2="12" y2="12"></line>
+                            <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                        </svg>
+                        <span id="global-error-text">Já existe um cadastro realizado com este número.</span>
+                    </div>
+
+                </form>
+            </div>
+        </section>
+
+        <!-- VIEW 3: QUALIFIED RESULT -->
+        <section id="view-qualified" class="app-view">
+            <div class="result-card animate-fade-in">
+                <div class="result-header">
+                    <div class="result-badge-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke-linecap="round" stroke-linejoin="round"/>
+                            <polyline points="22 4 12 14.01 9 11.01" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h1 class="result-title">Seu perfil é compatível com a Biblioteca da Viola.</h1>
+                    <p class="result-subtitle">Com base nas suas respostas, tudo indica que você pode se beneficiar de um ambiente estruturado para evolução contínua.</p>
+                </div>
+
+                <!-- Inclusion Checkboxes List Grid -->
+                <div class="offer-box">
+                    <h3 class="offer-title">Você terá acesso imediato a:</h3>
+                    
+                    <div class="offer-grid">
+                        <div class="offer-item">
+                            <div class="offer-check">✓</div>
+                            <div class="offer-details">
+                                <strong>Biblioteca da Viola</strong>
+                                <p>Acervo organizado de conteúdos permanentes.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="offer-item sub-item">
+                            <div class="offer-check-sub">➔</div>
+                            <div class="offer-details">
+                                <strong>(Digitação dos 480 hinos do hinário 5)</strong>
+                                <p>Precisão milimétrica e dedilhados facilitados para todos os hinos.</p>
+                            </div>
+                        </div>
+
+                        <div class="offer-item sub-item">
+                            <div class="offer-check-sub">➔</div>
+                            <div class="offer-details">
+                                <strong>Ornamentos (vibrato, portamentos e glissando)</strong>
+                                <p>Como aplicar expressão clássica de forma elegante e correta.</p>
+                            </div>
+                        </div>
+
+                        <div class="offer-item sub-item">
+                            <div class="offer-check-sub">➔</div>
+                            <div class="offer-details">
+                                <strong>Afinação Precisa</strong>
+                                <p>Exercícios auditivos e ajuste de pressão dos dedos.</p>
+                            </div>
+                        </div>
+
+                        <div class="offer-item sub-item">
+                            <div class="offer-check-sub">➔</div>
+                            <div class="offer-details">
+                                <strong>Controle de Arco</strong>
+                                <p>Produção de som limpo, velocidade e distribuição do arco.</p>
+                            </div>
+                        </div>
+
+                        <div class="offer-item sub-item">
+                            <div class="offer-check-sub">➔</div>
+                            <div class="offer-details">
+                                <strong>Estudo Inteligente</strong>
+                                <p>Método de alta performance em poucos minutos diários.</p>
+                            </div>
+                        </div>
+
+                        <div class="offer-item sub-item">
+                            <div class="offer-check-sub">➔</div>
+                            <div class="offer-details">
+                                <strong>Evolução Aplicada aos Hinos</strong>
+                                <p>Aplicação direta e prática nas partituras sacras.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="whatsapp-group-card">
+                        <div class="whatsapp-icon-wrapper">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="whatsapp-svg">
+                                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <div class="whatsapp-card-text">
+                            <strong>Grupo Fechado de Evolução da Viola no WhatsApp</strong>
+                            <p>Um ambiente com músicos comprometidos com crescimento real.</p>
+                            <ul class="whatsapp-benefits">
+                                <li><span>✓</span> Compartilhar conquistas</li>
+                                <li><span>✓</span> Tirar dúvidas rápidas</li>
+                                <li><span>✓</span> Trocar experiências</li>
+                                <li><span>✓</span> Receber avisos importantes</li>
+                                <li><span>✓</span> Participar de desafios ocasionais</li>
+                                <li><span>✓</span> Permanecer motivado durante a jornada</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="quote-card">
+                        <p class="quote-text">"Você não evolui apenas assistindo aulas. Você evolui quando está cercado de pessoas que estão buscando o mesmo objetivo."</p>
+                    </div>
+                </div>
+
+                <!-- Price and Checkout Box -->
+                <div class="pricing-card">
+                    <div class="pricing-price">
+                        <span class="price-prefix">Apenas</span>
+                        <span class="price-value">R$60</span>
+                        <span class="price-suffix">/ mês</span>
+                    </div>
+
+                    <button id="btn-go-to-payment" class="btn btn-gold btn-large btn-payment animate-pulse">
+                        Quero Fazer Parte
+                        <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- VIEW 4: UNQUALIFIED RESULT -->
+        <section id="view-unqualified" class="app-view">
+            <div class="result-card unqualified-card animate-fade-in">
+                <div class="result-header text-center">
+                    <div class="result-badge-icon badge-gray highlight-demitido">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                    </div>
+                    <span class="unqualified-badge-label" style="border-color: var(--gold-dark); color: var(--gold-dark); background: rgba(140, 115, 83, 0.05);">Processo Seletivo Restrito</span>
+                    <h1 class="result-title text-gold" style="color: var(--gold-accent);">Seu perfil não atende aos pré-requisitos da Biblioteca da Viola no momento.</h1>
+                    <p class="result-subtitle">O nosso método foi desenhado para um grupo exclusivo de violistas comprometidos com a excelência técnica rigorosa.</p>
+                </div>
+
+                <div class="unqualified-explanation-box">
+                    <div class="quote-container" style="border-left-color: var(--gold-dark);">
+                        <p class="quote-philosophical">
+                            "A Biblioteca da Viola não é um mero portal de videoaulas comuns. É um ambiente de estudos de alta performance, focado na verdadeira expressão e precisão técnica da viola de arco. Para preservar a qualidade do nosso ecossistema e garantir que o método seja aproveitado ao máximo, realizamos esta análise criteriosa de perfil."
+                        </p>
+                        <span class="quote-author">— Diretoria Biblioteca da Viola</span>
+                    </div>
+
+                    <div class="rejection-reasons">
+                        <h2 class="rejection-title">Por que o seu acesso não foi liberado?</h2>
+                        <p class="rejection-text">
+                            A partir das suas respostas, identificamos que o seu momento de estudos atual está focado em um aprendizado independente e autônomo, ou que a prioridade de investir tempo e dedicação estruturada não se alinha com a nossa metodologia rigorosa de estudos diários.
+                        </p>
+                        <p class="rejection-text highlight-bold" style="border-left-color: var(--gold-dark);">
+                            A excelência na viola de arco exige dedicação constante e o respeito ao método passo a passo. Por essa razão, optamos por não liberar o seu cadastro neste momento.
+                        </p>
+                    </div>
+
+                    <!-- EXCLUSIVITY TABLE (Para quem SIM vs Para quem NÃO) -->
+                    <div class="exclusivity-table-container">
+                        <h3 class="table-headline">Entenda os Nossos Critérios de Admissão:</h3>
+                        <div class="exclusivity-grid-layout">
+                            
+                            <!-- COLUNA SIM -->
+                            <div class="exclusivity-column column-success" style="border-top-color: var(--gold-primary) !important;">
+                                <div class="col-header">
+                                    <span class="col-icon" style="background: rgba(197, 168, 128, 0.1); color: var(--gold-accent);">✓</span>
+                                    <h4 style="color: var(--gold-accent);">A Biblioteca da Viola é recomendada para:</h4>
+                                </div>
+                                <ul class="col-list">
+                                    <li>
+                                        <strong>Compromisso de Prática Diária:</strong> Violistas determinados que compreendem que o progresso técnico exige dedicação e rotina organizada.
+                                    </li>
+                                    <li>
+                                        <strong>Domínio Técnico Rigoroso:</strong> Músicos focados em aperfeiçoar afinação, controle preciso de arco e a aplicação de ornamentos clássicos (vibrato, portamento e glissando).
+                                    </li>
+                                    <li>
+                                        <strong>Precisão no Hinário 5:</strong> Quem busca precisão absoluta na digitação e dedilhados facilitados para os hinos de viola de arco.
+                                    </li>
+                                    <li>
+                                        <strong>Valorização do Método:</strong> Quem entende que o acesso a um material de excelência acelera anos de estudo e poupa tempo precioso.
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- COLUNA NÃO -->
+                            <div class="exclusivity-column column-error" style="border-top-color: rgba(255, 255, 255, 0.15) !important;">
+                                <div class="col-header">
+                                    <span class="col-icon" style="background: rgba(255, 255, 255, 0.05); color: var(--text-secondary);">✕</span>
+                                    <h4 style="color: var(--text-secondary);">A Biblioteca da Viola NÃO é recomendada para:</h4>
+                                </div>
+                                <ul class="col-list">
+                                    <li>
+                                        <strong>Busca por Resultados Rápidos:</strong> Aqueles que esperam dominar técnicas complexas sem a devida constância de estudos.
+                                    </li>
+                                    <li>
+                                        <strong>Estudo Desorganizado:</strong> Quem prefere continuar pegando dicas soltas de forma desordenada pela internet, acumulando vícios de execução.
+                                    </li>
+                                    <li>
+                                        <strong>Falta de Foco em Expressividade:</strong> Músicos que não veem necessidade de se aprofundar nos fundamentos clássicos de arco e expressão.
+                                    </li>
+                                    <li>
+                                        <strong>Desvalorização da Formação:</strong> Aqueles que não consideram prioritário investir na sua própria evolução técnica e musical.
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <p class="final-warning-philosophical">
+                        O investimento financeiro é secundário. Nosso real compromisso é assegurar que cada membro que entra no programa está no estágio e no momento ideais de dedicação que a nossa comunidade exige.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- VIEW 5: MOCK CHECKOUT GATEWAY -->
+        <section id="view-checkout" class="app-view">
+            <div class="checkout-card animate-fade-in">
+                <div class="checkout-header">
+                    <div class="lock-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                        </svg>
+                    </div>
+                    <h2 class="checkout-title">Ambiente de Pagamento Seguro</h2>
+                    <p class="checkout-subtitle">Biblioteca da Viola - Plano de Evolução Mensal</p>
+                </div>
+
+                <div class="checkout-summary">
+                    <div class="summary-row">
+                        <span>Assinatura Mensal da Viola</span>
+                        <strong>R$ 60,00</strong>
+                    </div>
+                    <div class="summary-row promo-free">
+                        <span>Taxa de Matrícula</span>
+                        <span class="free-badge">Grátis</span>
+                    </div>
+                    <div class="summary-divider"></div>
+                    <div class="summary-row total-row">
+                        <span>Total a Pagar Hoje</span>
+                        <span class="gold-text">R$ 60,00</span>
+                    </div>
+                </div>
+
+                <div class="payment-tabs">
+                    <button class="payment-tab active" data-tab="pix">
+                        <span class="tab-icon">⚡</span> Pix
+                    </button>
+                    <button class="payment-tab" data-tab="card">
+                        <span class="tab-icon">💳</span> Cartão de Crédito
+                    </button>
+                </div>
+
+                <!-- PIX INTERFACE -->
+                <div class="payment-method-content active" id="tab-content-pix">
+                    <p class="payment-instruction">Pague com Pix para liberação instantânea do seu acesso.</p>
+                    <div class="pix-qr-container">
+                        <!-- Elegant Mock QR Code with SVGs -->
+                        <svg viewBox="0 0 100 100" class="pix-qr-svg">
+                            <rect x="10" y="10" width="25" height="25" fill="none" stroke="currentColor" stroke-width="4"/>
+                            <rect x="15" y="15" width="15" height="15" fill="currentColor"/>
+                            <rect x="65" y="10" width="25" height="25" fill="none" stroke="currentColor" stroke-width="4"/>
+                            <rect x="70" y="15" width="15" height="15" fill="currentColor"/>
+                            <rect x="10" y="65" width="25" height="25" fill="none" stroke="currentColor" stroke-width="4"/>
+                            <rect x="15" y="70" width="15" height="15" fill="currentColor"/>
+                            <!-- Random QR elements -->
+                            <rect x="45" y="20" width="10" height="20" fill="currentColor"/>
+                            <rect x="45" y="50" width="20" height="10" fill="currentColor"/>
+                            <rect x="75" y="45" width="15" height="10" fill="currentColor"/>
+                            <rect x="70" y="70" width="20" height="20" fill="currentColor"/>
+                            <rect x="45" y="75" width="15" height="15" fill="currentColor"/>
+                        </svg>
+                        <div class="pix-badge">PIX Oficial</div>
+                    </div>
+                    <div class="pix-code-wrapper">
+                        <input type="text" readonly id="pix-copy-paste-code" value="00020101021226840014br.gov.bcb.pix2562bibliotecadaviola60.00" class="input-text text-center font-mono">
+                        <button id="btn-copy-pix" class="btn btn-outline btn-small">Copiar Código Pix</button>
+                    </div>
+                    <div class="payment-sim-actions">
+                        <button id="btn-simulate-pix-paid" class="btn btn-gold btn-large">
+                            Confirmar Pagamento Simulado (PIX)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- CARD INTERFACE -->
+                <div class="payment-method-content" id="tab-content-card">
+                    <form id="checkout-card-form" class="card-form" onsubmit="event.preventDefault();">
+                        <div class="input-wrapper">
+                            <label class="field-label">Número do Cartão</label>
+                            <input type="text" id="card-number" placeholder="4444 4444 4444 4444" class="input-text" maxlength="19">
+                        </div>
+                        <div class="form-row-2">
+                            <div class="input-wrapper">
+                                <label class="field-label">Validade</label>
+                                <input type="text" id="card-expiry" placeholder="MM/AA" class="input-text" maxlength="5">
+                            </div>
+                            <div class="input-wrapper">
+                                <label class="field-label">CVC</label>
+                                <input type="text" id="card-cvc" placeholder="123" class="input-text" maxlength="4">
+                            </div>
+                        </div>
+                        <div class="input-wrapper">
+                            <label class="field-label">Nome Impresso no Cartão</label>
+                            <input type="text" id="card-holder" placeholder="NOME DO PORTADOR" class="input-text">
+                        </div>
+                        
+                        <div class="payment-sim-actions">
+                            <button id="btn-simulate-card-paid" type="button" class="btn btn-gold btn-large">
+                                Finalizar e Pagar R$ 60,00
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <button id="btn-cancel-checkout" class="btn-cancel">Voltar para o Diagnóstico</button>
+            </div>
+        </section>
+
+        <!-- VIEW 6: WELCOME PAGE (Pós-Pagamento) -->
+        <section id="view-welcome" class="app-view">
+            <div class="result-card animate-fade-in">
+                <div class="success-banner">
+                    <div class="success-icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="welcome-success-svg">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke-linecap="round" stroke-linejoin="round"/>
+                            <polyline points="22 4 12 14.01 9 11.01" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <span class="success-badge">Pagamento Confirmado</span>
+                </div>
+
+                <div class="result-header text-center">
+                    <h1 class="welcome-title">Bem-vindo à Biblioteca da Viola.</h1>
+                    <p class="welcome-subtitle">Seu acesso foi liberado com sucesso. Siga as etapas abaixo para iniciar a sua jornada.</p>
+                </div>
+
+                <div class="steps-box">
+                    <!-- Step 1 Card -->
+                    <div class="step-card">
+                        <div class="step-badge">Passo 1</div>
+                        <div class="step-card-content">
+                            <h3>Acessar a Biblioteca da Viola</h3>
+                            <p>Seus dados de acesso temporários foram enviados para o seu WhatsApp cadastrado. Clique no botão abaixo para ir direto à plataforma de aulas.</p>
+                            <a href="#" onclick="event.preventDefault(); alert('Simulação de redirecionamento para o ambiente virtual de estudos da Biblioteca da Viola.');" class="btn btn-outline btn-full-mobile">Acessar Plataforma</a>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 Card -->
+                    <div class="step-card highlight-step">
+                        <div class="step-badge gold-badge">Passo 2</div>
+                        <div class="step-card-content">
+                            <h3>Entrar no Grupo Fechado de Evolução</h3>
+                            <p>Integre-se imediatamente no nosso grupo fechado de WhatsApp no qual compartilhamos estudos diários, partituras exclusivas de hinos e feedbacks.</p>
+                            
+                            <button id="btn-join-whatsapp-group" class="btn btn-gold btn-full-mobile animate-pulse">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="whatsapp-btn-svg">
+                                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Entrar no Grupo de WhatsApp
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="welcome-disclaimer">Qualquer dúvida, envie uma mensagem para o suporte da Biblioteca da Viola.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Page Footer -->
+    <footer class="main-footer">
+        <p>&copy; 2026 Biblioteca da Viola. Todos os direitos reservados. Focado na excelência musical do violista de arco.</p>
+        <p class="footer-meta">Desenvolvido com excelência técnica para músicos comprometidos. | <a href="politica-de-privacidade.html" target="_blank" style="color:var(--text-muted); text-decoration:none; transition:var(--transition-quick);" onmouseover="this.style.color='var(--gold-accent)';" onmouseout="this.style.color='var(--text-muted)';">Políticas de Privacidade (LGPD)</a></p>
+    </footer>
+
+
+
+    <!-- Firebase SDK (Using Client Firebase v9/v10 Modular scripts or standard compat) -->
+    <!-- We will load Firebase compat libraries for reliable simple setup without bundlers -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+    <!-- App Logic Scripts -->
+    <script src="firebaseConfig.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
