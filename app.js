@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Se preenchido com seu link real, ao clicar em "Quero Fazer Parte" o usuário é
         // enviado diretamente para sua página de pagamento real em vez do simulador.
         // Deixe em branco "" para usar a tela de checkout simulada interna.
-        checkoutReal: "",
+        checkoutReal: "https://pay.kiwify.com.br/b7V5TVv",
         
         // Link para conteúdos gratuitos (Resultado Não Qualificado)
         conteudoGratuito: "https://www.youtube.com/c/BibliotecaDaViolaMock"
